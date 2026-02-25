@@ -26,7 +26,7 @@ introFront.className = 'front';
 introFront.innerHTML = `
   <div class="intro-content">
     <h1>Memory Album</h1>
-    <div class="author"><em>Bùi Ngọc Thiên Hương 😍</em></div>
+    <div class="author"><em>Kiên Thị Ngọc Hân 😍</em></div>
     <div>🎁❤️🎁</div>
   </div>
 `;
@@ -46,25 +46,7 @@ for (let i = 1; i <= 20; i++) { //Chỉnh số lượng ảnh ở đây
 
 const dates = [
   "11-02-2026",
-  "12-02-2026",
-  "12-02-2026",
-  "12-02-2026",
-  "13-02-2026",
-  "13-02-2026",
-  "14-02-2026",
-  "14-02-2026",
-  "14-02-2026",
-  "14-02-2026",
-  "15-02-2026",
-  "16-02-2026",
-  "16-02-2026",
-  "16-02-2026",
-  "16-02-2026",
-  "17-02-2026",
-  "17-02-2026",
-  "17-02-2026",
-  "24-02-2026",
-  "24-02-2026"
+  
 ];
 
 for (let i = 0; i < images.length; i++) {
@@ -218,4 +200,5 @@ pages.forEach((page) => {
   });
 
 });
+
 
