@@ -4,7 +4,7 @@ let inputPass = "";
 const passwords = {
   1: "12012011",
   2: "02122005",
-  3: "100226"
+  3: "060124"
 };
 
 function getInput() {
