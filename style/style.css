@@ -1,0 +1,389 @@
+*{
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  cursor: auto;
+  box-sizing: border-box;
+  
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  background: #ffeaf6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.author {
+  font-size: clamp(22px, 5vw, 34px);
+  margin-top: 15px;
+  color: #333;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform-origin: left;
+  transition: transform 1.2s ease-in-out;
+  cursor: pointer;
+  border: 3px solid #888;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background: white;
+}
+
+.page .front img,
+.page .back img {
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+  border: 2px solid #444;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.page .back {
+  transform: rotateY(180deg);
+}
+
+.page .back .photo-date {
+  transform: rotateY(180deg);
+  text-align: center;
+  backface-visibility: hidden;
+}
+
+.page.flipped {
+  transform: rotateY(-180deg) rotateX(3deg);
+}
+
+.intro-content, .end-content {
+  text-align: center;
+  border: 3px solid black;
+  padding: 10px;
+  border-radius: 15%;
+}
+
+.intro-content h1 {
+  font-size: clamp(40px, 10vw, 70px);
+  color: #fb18c2;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 10px rgba(251, 24, 194, 0.3);
+}
+
+.intro-content p {
+  font-size: clamp(22px, 6vw, 32px);
+  line-height: 1.8;
+  color: #555;
+  line-height: 1.6;
+}
+
+.intro-content,.end-content {
+  background: linear-gradient(135deg, #f5f7fa, #e0e4e8);
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-content h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(20px, 5vw, 24px);
+  margin-bottom: 14px;
+  color: #333;
+}
+
+.end-content span {
+  font-size: clamp(14px, 3.8vw, 17px);
+  color: #444;
+  line-height: 1.6;
+}
+
+.caption {
+  margin-top: 18px;
+  font-size: 20px;
+  color: #555;
+  text-align: center;
+  z-index: 10;
+  flex-shrink: 0;
+}
+  
+.page .front,
+.page .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.book {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(85vw, 750px);  /* giảm vw xuống */
+  aspect-ratio: 3 / 4;  /* giữ tỉ lệ đẹp */
+  perspective: 2000px;
+  z-index: 1;
+}
+
+/* ===== LOCK SCREEN STYLE FINAL ===== */
+
+#lock-screen-1,
+#lock-screen-2,
+#lock-screen-3 {
+  position: fixed;
+  inset: 0;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3d6dc;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.lock-wrapper {
+  width: 100%;
+  max-width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;   /* 👈 thêm dòng này */
+}
+
+.lock-wrapper h2 {
+  text-align: center;
+  line-height: 1.4;
+  height: 110px;      /* 👈 đổi thành height cố định */
+}
+
+.lock-wrapper h2 span {
+  display: block;
+  margin-top: 6px;
+}
+
+/* Tiêu đề */
+#lock-screen-1 h2,
+#lock-screen-2 h2,
+#lock-screen-3 h2 {
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #e75480;
+  margin-bottom: 8px;
+}
+
+/* Ô nhập pass */
+.password-input {
+  width: 100%;
+  height: 42px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 14px;
+  text-align: center;
+  background: #eeeeee;
+}
+
+/* Keypad */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 280px;  /* 👈 thêm dòng này */
+}
+
+/* Nút số */
+.keypad button {
+  width: 100%;
+  aspect-ratio: 1 / 1;  /* 👈 làm thành hình vuông */
+  border-radius: 20px;
+  border: none;
+  background: #f9f9f9;
+  color: #444;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.08),
+    inset 0 -2px 4px rgba(0,0,0,0.04);
+
+  transition: all 0.2s ease;
+}
+
+.keypad button:active {
+  transform: scale(0.93);
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.12),
+    inset 0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* Nút X */
+.keypad .delete {
+  background: linear-gradient(135deg, #ff6b9a, #e75480);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 8px 18px rgba(231,84,128,0.4);
+}
+
+/* Nút xác nhận */
+.submit-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #ff6b9a, #e75480);
+  color: white;
+  font-size: 24px;
+  box-shadow: 0 10px 25px rgba(231,84,128,0.45);
+}
+
+.submit-btn:active {
+  transform: scale(0.92);
+}
+
+/* ===== INPUT STYLE ===== */
+input {
+  transition: all 0.3s ease;
+}
+
+.input-error {
+  border: 2px solid #ff4d4d;
+  background: #ffe5e5;
+}
+
+.input-success {
+  border: 2px solid #4CAF50;
+  background: #e8fbe8;
+}
+
+/* ===== SHAKE ===== */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+/* ===== BIG UNLOCK OVERLAY ===== */
+
+#unlock-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 20000;
+
+  perspective: 1500px;   /* 👈 THÊM DÒNG NÀY */
+}
+
+.big-lock {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.big-lock .front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+
+  transform: rotateY(0deg) translateZ(2px); /* 👈 thêm dòng này */
+}
+
+.big-lock .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+
+  transform: rotateY(180deg) translateZ(2px); /* 👈 thêm translateZ */
+}
+
+/* Xoay ổ khóa */
+@keyframes lockSpin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(1800deg); /* 5 vòng */
+  }
+}
+
+.spin {
+  animation: lockSpin 2s ease-out forwards;
+}
+
+/* Khi mở */
+.open {
+  animation: popOpen 0.4s ease forwards;
+}
+
+@keyframes popOpen {
+  0% {
+    transform: rotateY(1800deg) scale(1);
+  }
+  60% {
+    transform: rotateY(1800deg) scale(1.6);
+  }
+  100% {
+    transform: rotateY(1800deg) scale(1.3);
+  }
+}
+
