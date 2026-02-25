@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Memory Album</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+
+<!-- 🔐 LOCK 1 -->
+<div id="lock-screen-1">
+  <div class="lock-wrapper">
+    <h2>
+  NHẬP PASS ĐI NGƯỜI ĐẸP
+  <span class="hint">Gợi ý: Sinh nhựt cụa bé 🥰</span>
+  <span class="hint">(Ngày / Tháng / Năm)</span>
+</h2>
+
+    <input type="text" id="password-input-1"
+           class="password-input"
+           placeholder="Enter password" readonly />
+
+    <div class="keypad">
+      <button onclick="enterNumber(1)">1</button>
+      <button onclick="enterNumber(2)">2</button>
+      <button onclick="enterNumber(3)">3</button>
+      <button onclick="enterNumber(4)">4</button>
+      <button onclick="enterNumber(5)">5</button>
+      <button onclick="enterNumber(6)">6</button>
+      <button onclick="enterNumber(7)">7</button>
+      <button onclick="enterNumber(8)">8</button>
+      <button onclick="enterNumber(9)">9</button>
+      <button></button>
+      <button onclick="enterNumber(0)">0</button>
+      <button class="delete" onclick="deleteNumber()">X</button>
+    </div>
+
+    <button class="submit-btn" onclick="checkPass()">✔</button>
+  </div>
+</div>
+
+<!-- 🔐 LOCK 2 -->
+<div id="lock-screen-2" style="display:none;">
+  <div class="lock-wrapper">
+        <h2>
+  NHẬP PASS ĐI NGƯỜI ĐẸP
+  <span class="hint">Gợi ý: Sinh nhựt cụa anh 😎</span>
+  <span class="hint">(Ngày / Tháng / Năm)</span>
+</h2>
+
+    <input type="text" id="password-input-2"
+           class="password-input"
+           placeholder="Enter password" readonly />
+
+    <div class="keypad">
+      <button onclick="enterNumber(1)">1</button>
+      <button onclick="enterNumber(2)">2</button>
+      <button onclick="enterNumber(3)">3</button>
+      <button onclick="enterNumber(4)">4</button>
+      <button onclick="enterNumber(5)">5</button>
+      <button onclick="enterNumber(6)">6</button>
+      <button onclick="enterNumber(7)">7</button>
+      <button onclick="enterNumber(8)">8</button>
+      <button onclick="enterNumber(9)">9</button>
+      <button></button>
+      <button onclick="enterNumber(0)">0</button>
+      <button class="delete" onclick="deleteNumber()">X</button>
+    </div>
+
+    <button class="submit-btn" onclick="checkPass()">✔</button>
+  </div>
+</div>
+
+<!-- 🔐 LOCK 3 -->
+<div id="lock-screen-3" style="display:none;">
+  <div class="lock-wrapper">
+    <h2>
+  NHẬP PASS ĐI NGƯỜI ĐẸP
+  <span class="hint">Gợi ý: A đồng ý làm ny e khi nèo 🙄</span>
+  <span class="hint">(Ngày / Tháng / Năm)</span>
+</h2>
+
+    <input type="text" id="password-input-3"
+           class="password-input"
+           placeholder="Enter password" readonly />
+
+    <div class="keypad">
+      <button onclick="enterNumber(1)">1</button>
+      <button onclick="enterNumber(2)">2</button>
+      <button onclick="enterNumber(3)">3</button>
+      <button onclick="enterNumber(4)">4</button>
+      <button onclick="enterNumber(5)">5</button>
+      <button onclick="enterNumber(6)">6</button>
+      <button onclick="enterNumber(7)">7</button>
+      <button onclick="enterNumber(8)">8</button>
+      <button onclick="enterNumber(9)">9</button>
+      <button></button>
+      <button onclick="enterNumber(0)">0</button>
+      <button class="delete" onclick="deleteNumber()">X</button>
+    </div>
+
+    <button class="submit-btn" onclick="checkPass()">✔</button>
+  </div>
+</div>
+  
+<!-- 📖 Album -->
+<div class="book" id="book" style="display:none;"></div>
+
+<!-- 🔓 BIG LOCK OVERLAY -->
+<div id="unlock-overlay">
+  <div class="big-lock">
+    <div class="front">🔒</div>
+    <div class="back">🔒</div>
+  </div>
+</div>
+  
+<audio id="sound" loop>
+  <source src="./style/KhoBau.mp3" type="audio/mpeg" />
+</audio>
+
+<script src="./style/script.js" defer></script>
+<script src="pass.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
