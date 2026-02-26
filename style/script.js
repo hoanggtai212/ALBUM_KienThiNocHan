@@ -26,7 +26,7 @@ introFront.className = 'front';
 introFront.innerHTML = `
   <div class="intro-content">
     <h1>Memory Album</h1>
-    <div class="author"><em>Bùi Ngọc Thiên Hương 😍</em></div>
+    <div class="author"><em>Kiên Thị Nọc Hân 😍</em></div>
     <div>🎁❤️🎁</div>
   </div>
 `;
@@ -241,6 +241,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
