@@ -197,12 +197,16 @@ const flipForward = () => {
       typed = true;
     }
 
-    page.addEventListener("transitionend", () => {
-   page.classList.remove("flipping");
-   currentTopZ++;
-   page.style.zIndex = currentTopZ;
-   isFlipping = false;
-}, { once: true });
+    page.addEventListener("transitionend", function handler(e) {
+      if (e.propertyName !== "transform") return;
+
+      page.classList.remove("flipping");
+      currentTopZ++;
+      page.style.zIndex = currentTopZ;
+      isFlipping = false;
+
+      page.removeEventListener("transitionend", handler);
+    });
   }
 };
 
@@ -214,12 +218,16 @@ const flipBackward = () => {
     page.classList.add('flipping');
     page.classList.remove('flipped');
 
-    page.addEventListener("transitionend", () => {
-   page.classList.remove("flipping");
-   currentTopZ++;
-   page.style.zIndex = currentTopZ;
-   isFlipping = false;
-}, { once: true });
+    page.addEventListener("transitionend", function handler(e) {
+      if (e.propertyName !== "transform") return;
+
+      page.classList.remove("flipping");
+      currentTopZ++;
+      page.style.zIndex = currentTopZ;
+      isFlipping = false;
+
+      page.removeEventListener("transitionend", handler);
+    });
   }
 };
 
@@ -246,6 +254,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
