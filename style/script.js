@@ -197,12 +197,12 @@ const flipForward = () => {
       typed = true;
     }
 
-    setTimeout(() => {
-      page.classList.remove('flipping');
-      currentTopZ++;
-      page.style.zIndex = currentTopZ;
-      isFlipping = false; // mở khóa sau khi lật xong
-    }, 1000); // 1000 phải bằng thời gian animation CSS
+    page.addEventListener("transitionend", () => {
+   page.classList.remove("flipping");
+   currentTopZ++;
+   page.style.zIndex = currentTopZ;
+   isFlipping = false;
+}, { once: true });
   }
 };
 
@@ -214,12 +214,12 @@ const flipBackward = () => {
     page.classList.add('flipping');
     page.classList.remove('flipped');
 
-    setTimeout(() => {
-      page.classList.remove('flipping');
-      currentTopZ++;
-      page.style.zIndex = currentTopZ;
-      isFlipping = false;
-    }, 1000);
+    page.addEventListener("transitionend", () => {
+   page.classList.remove("flipping");
+   currentTopZ++;
+   page.style.zIndex = currentTopZ;
+   isFlipping = false;
+}, { once: true });
   }
 };
 
@@ -246,18 +246,6 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
