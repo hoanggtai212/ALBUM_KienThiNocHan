@@ -197,16 +197,12 @@ const flipForward = () => {
       typed = true;
     }
 
-    page.addEventListener("transitionend", function handler(e) {
-  if (e.target !== page) return;          // 🔥 chặn bubble
-  if (e.propertyName !== "transform") return;
-
+    setTimeout(() => {
   page.classList.remove("flipping");
   currentTopZ++;
   page.style.zIndex = currentTopZ;
   isFlipping = false;
-
-}, { once: true });  // 🔥 cực quan trọng
+}, 1000);
   }
 };
 
@@ -218,16 +214,12 @@ const flipBackward = () => {
     page.classList.add('flipping');
     page.classList.remove('flipped');
 
-    page.addEventListener("transitionend", function handler(e) {
-  if (e.target !== page) return;          // 🔥 chặn bubble
-  if (e.propertyName !== "transform") return;
-
+    setTimeout(() => {
   page.classList.remove("flipping");
   currentTopZ++;
   page.style.zIndex = currentTopZ;
   isFlipping = false;
-
-}, { once: true });  // 🔥 cực quan trọng
+}, 1000);
   }
 };
 
@@ -254,6 +246,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
