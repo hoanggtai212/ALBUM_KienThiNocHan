@@ -6,10 +6,10 @@ const sound = document.getElementById("sound");
 document.addEventListener("click", () => {
   if (sound.paused) {
     sound.currentTime = 0;
-    sound.addEventListener("pause", () => {
-  setTimeout(() => {
-    sound.play().catch(() => {});
-  }, 500);
+    // sound.addEventListener("pause", () => {
+   //  setTimeout(() => {
+   //  sound.play().catch(() => {});
+   //  }, 500);
 });
     sound.play().catch(err => console.log("Không phát được nhạc:", err));
   }
@@ -243,6 +243,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
