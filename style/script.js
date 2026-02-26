@@ -40,7 +40,7 @@ book.appendChild(introPage);
 pages.push(introPage);
 
 const images = [];
-for (let i = 1; i <= ; i++) { //Chỉnh số lượng ảnh ở đây
+for (let i = 1; i <= 22; i++) { //Chỉnh số lượng ảnh ở đây
   images.push(`./style/image/Anh (${i}).jpg`);
 }
 
@@ -243,6 +243,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
