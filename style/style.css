@@ -35,7 +35,7 @@ body {
   position: absolute;
   transform-style: preserve-3d;
   transform-origin: left;
-  transition: transform 1.2s ease-in-out;
+  transition: transform 1s ease-in-out;
   cursor: pointer;
   border: 3px solid #888;
   border-radius: 10px;
@@ -393,6 +393,7 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
 
