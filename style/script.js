@@ -202,7 +202,7 @@ const flipForward = () => {
       currentTopZ++;
       page.style.zIndex = currentTopZ;
       isFlipping = false; // mở khóa sau khi lật xong
-    }, 1200); // 1000 phải bằng thời gian animation CSS
+    }, 1000); // 1000 phải bằng thời gian animation CSS
   }
 };
 
@@ -219,7 +219,7 @@ const flipBackward = () => {
       currentTopZ++;
       page.style.zIndex = currentTopZ;
       isFlipping = false;
-    }, 1200);
+    }, 1000);
   }
 };
 
@@ -246,6 +246,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
