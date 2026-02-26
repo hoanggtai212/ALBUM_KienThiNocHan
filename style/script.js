@@ -5,16 +5,16 @@ const sound = document.getElementById("sound");
 
 document.addEventListener("click", () => {
   if (sound.paused) {
-    sound.currentTime = 11;
-    sound.play().catch(err => console.log("Không phát được nhạc:", err));
-  }
-}, { once: true });
-// Nếu nhạc bị pause do thông báo hoặc hệ thống
-sound.addEventListener("pause", () => {
+    sound.currentTime = 0;
+    sound.addEventListener("pause", () => {
   setTimeout(() => {
     sound.play().catch(() => {});
   }, 500);
 });
+    sound.play().catch(err => console.log("Không phát được nhạc:", err));
+  }
+}, { once: true });
+
 
 const introPage = document.createElement('div');
 introPage.className = 'page';
@@ -26,7 +26,7 @@ introFront.className = 'front';
 introFront.innerHTML = `
   <div class="intro-content">
     <h1>Memory Album</h1>
-    <div class="author"><em>Kiên Thị Ngọc Hân 😍</em></div>
+    <div class="author"><em>Bùi Ngọc Thiên Hương 😍</em></div>
     <div>🎁❤️🎁</div>
   </div>
 `;
@@ -45,28 +45,26 @@ for (let i = 1; i <= 20; i++) { //Chỉnh số lượng ảnh ở đây
 }
 
 const dates = [
- "01-06-2025",
-  01-06-2025",
-  06-06-2025",
-  06-06-2025",
-  19-06-2025",
-  19-06-2025",
-  19-06-2025",
-  30-06-2025",
-  03-07-2025",
-  10-07-2025",
-  18-07-2025",
-  18-07-2025",
-  29-07-2025",
-  30-07-2025",
-  30-07-2025",
-  04-08-2025",
-  04-08-2025",
-  10-08-2025",
-  10-08-2025",
-  10-08-2025",
-  16-08-2025",
-  24-09-2025",
+  "11-02-2026",
+  "12-02-2026",
+  "12-02-2026",
+  "12-02-2026",
+  "13-02-2026",
+  "13-02-2026",
+  "14-02-2026",
+  "14-02-2026",
+  "14-02-2026",
+  "14-02-2026",
+  "15-02-2026",
+  "16-02-2026",
+  "16-02-2026",
+  "16-02-2026",
+  "16-02-2026",
+  "17-02-2026",
+  "17-02-2026",
+  "17-02-2026",
+  "24-02-2026",
+  "24-02-2026"
 ];
 
 for (let i = 0; i < images.length; i++) {
@@ -161,50 +159,64 @@ function typewriterEffect(text, element) {
 
 let currentTopZ = 200;
 let typed = false;
+let isFlipping = false; // thêm dòng này
 
 pages.forEach((page) => {
   let startX = 0;
   const front = page.querySelector('.front');
   const back = page.querySelector('.back');
 
-  const flipForward = () => {
-    if (!page.classList.contains('flipped')) {
-      page.classList.add('flipped');
+const flipForward = () => {
+  if (isFlipping) return; // nếu đang lật thì chặn
+  if (!page.classList.contains('flipped')) {
 
-      if (page === pages[pages.length - 2] && !typed) {
-        const endText = document.getElementById('ending-text');
-        const content = `A iu 3 thứ trên thế giới này : 
-          Mặt trời (the Sun) ☀️, 
-          Mặt trăg (the Moon)🌕,
-          Và em (the Exception) ❤️. 
-          Mặt trời là ...
-          Ánh ság của ban mai 🌅,
-          Mặt trăg là ...
-          Vẻ đẹp của màn đêm 🌌,
-          Còn e là 🤔 ... 
-          Là đệ cụa toi 😎
-          Ý nhầm, còn e là 🤔 ... 
-          Là đìu ngọt ngào nhứt của a 😘`;
-        endText.innerHTML = "";
-        typewriterEffect(content, endText);
+    isFlipping = true; // khóa lại
 
-        typed = true;
-      }
+    page.classList.add('flipped');
 
-      setTimeout(() => {
-  currentTopZ++;
-  page.style.zIndex = currentTopZ;
-}, 1000);
+    if (page === pages[pages.length - 2] && !typed) {
+      const endText = document.getElementById('ending-text');
+      const content = `A iu 3 thứ trên thế giới này : 
+        Mặt trời (the Sun) ☀️, 
+        Mặt trăg (the Moon)🌕,
+        Và em (the Exception) ❤️. 
+        Mặt trời là ...
+        Ánh ság của ban mai 🌅,
+        Mặt trăg là ...
+        Vẻ đẹp của màn đêm 🌌,
+        Còn e là 🤔 ... 
+        Là đệ cụa toi 😎
+        Ý nhầm, còn e là 🤔 ... 
+        Là đìu ngọt ngào nhứt của a 😘
+        { Hết }`;
+      endText.innerHTML = "";
+      typewriterEffect(content, endText);
+      typed = true;
     }
-  };
 
-  const flipBackward = () => {
-    if (page.classList.contains('flipped')) {
-      page.classList.remove('flipped');
+    setTimeout(() => {
       currentTopZ++;
       page.style.zIndex = currentTopZ;
-    }
-  };
+      isFlipping = false; // mở khóa sau khi lật xong
+    }, 1200); // 1000 phải bằng thời gian animation CSS
+  }
+};
+
+const flipBackward = () => {
+  if (isFlipping) return;
+  if (page.classList.contains('flipped')) {
+
+    isFlipping = true;
+
+    page.classList.remove('flipped');
+
+    setTimeout(() => {
+      currentTopZ++;
+      page.style.zIndex = currentTopZ;
+      isFlipping = false;
+    }, 1200);
+  }
+};
 
   front.addEventListener('click', flipForward);
   back.addEventListener('click', flipBackward);
@@ -220,6 +232,20 @@ pages.forEach((page) => {
   });
 
 });
+
+// Khi rời khỏi tab -> pause
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    sound.pause();
+  } else {
+    sound.play().catch(() => {});
+  }
+});
+
+
+
+
+
 
 
 
