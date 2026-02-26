@@ -41,6 +41,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   background: white;
+  box-sizing: border-box;
 }
 
 .page .front img,
@@ -386,4 +387,5 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
