@@ -44,6 +44,16 @@ body {
   box-sizing: border-box;
 }
 
+/* ĐANG lật */
+.page.flipping {
+  transform: rotateY(-180deg) rotateX(3deg);
+}
+
+/* LẬT XONG */
+.page.flipped {
+  transform: rotateY(-180deg);
+}
+
 .page .front img,
 .page .back img {
   width: 100%;
@@ -62,10 +72,6 @@ body {
   transform: rotateY(180deg);
   text-align: center;
   backface-visibility: hidden;
-}
-
-.page.flipped {
-  transform: rotateY(-180deg) rotateX(3deg);
 }
 
 .intro-content, .end-content {
@@ -387,5 +393,6 @@ input {
     transform: rotateY(1800deg) scale(1.3);
   }
 }
+
 
 
