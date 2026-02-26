@@ -174,6 +174,7 @@ const flipForward = () => {
 
     isFlipping = true; // khóa lại
 
+    page.classList.add('flipping');
     page.classList.add('flipped');
 
     if (page === pages[pages.length - 2] && !typed) {
@@ -197,6 +198,7 @@ const flipForward = () => {
     }
 
     setTimeout(() => {
+      page.classList.remove('flipping');
       currentTopZ++;
       page.style.zIndex = currentTopZ;
       isFlipping = false; // mở khóa sau khi lật xong
@@ -209,10 +211,11 @@ const flipBackward = () => {
   if (page.classList.contains('flipped')) {
 
     isFlipping = true;
-
+    page.classList.add('flipping');
     page.classList.remove('flipped');
 
     setTimeout(() => {
+      page.classList.remove('flipping');
       currentTopZ++;
       page.style.zIndex = currentTopZ;
       isFlipping = false;
@@ -243,6 +246,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
