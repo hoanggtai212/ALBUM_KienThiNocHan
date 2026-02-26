@@ -198,15 +198,15 @@ const flipForward = () => {
     }
 
     page.addEventListener("transitionend", function handler(e) {
-      if (e.propertyName !== "transform") return;
+  if (e.target !== page) return;          // 🔥 chặn bubble
+  if (e.propertyName !== "transform") return;
 
-      page.classList.remove("flipping");
-      currentTopZ++;
-      page.style.zIndex = currentTopZ;
-      isFlipping = false;
+  page.classList.remove("flipping");
+  currentTopZ++;
+  page.style.zIndex = currentTopZ;
+  isFlipping = false;
 
-      page.removeEventListener("transitionend", handler);
-    });
+}, { once: true });  // 🔥 cực quan trọng
   }
 };
 
@@ -219,15 +219,15 @@ const flipBackward = () => {
     page.classList.remove('flipped');
 
     page.addEventListener("transitionend", function handler(e) {
-      if (e.propertyName !== "transform") return;
+  if (e.target !== page) return;          // 🔥 chặn bubble
+  if (e.propertyName !== "transform") return;
 
-      page.classList.remove("flipping");
-      currentTopZ++;
-      page.style.zIndex = currentTopZ;
-      isFlipping = false;
+  page.classList.remove("flipping");
+  currentTopZ++;
+  page.style.zIndex = currentTopZ;
+  isFlipping = false;
 
-      page.removeEventListener("transitionend", handler);
-    });
+}, { once: true });  // 🔥 cực quan trọng
   }
 };
 
@@ -254,6 +254,7 @@ document.addEventListener("visibilitychange", () => {
     sound.play().catch(() => {});
   }
 });
+
 
 
 
