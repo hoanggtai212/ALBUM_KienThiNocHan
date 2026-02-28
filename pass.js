@@ -4,7 +4,7 @@ let inputPass = "";
 const passwords = {
   1: "12012011",
   2: "02122005",
-  3: "1234"
+  3: "06012024"
 };
 
 function getInput() {
@@ -12,7 +12,7 @@ function getInput() {
 }
 
 function enterNumber(num) {
-  if (inputPass.length >= 8) return;
+  if (inputPass.length >= 10) return;
   inputPass += num;
   getInput().value = "*".repeat(inputPass.length);
 }
@@ -37,7 +37,6 @@ function checkPass() {
 
     // reset trạng thái
     bigLock.classList.remove("spin", "open");
-    void bigLock.offsetWidth;
 
     // đảm bảo bắt đầu là 🔒
     if (front) front.textContent = "🔒";
@@ -90,3 +89,17 @@ function checkPass() {
     getInput().value = "";
   }
 }
+
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("unlock-overlay");
+  const bigLock = overlay.querySelector(".big-lock");
+
+  overlay.style.display = "flex";
+
+  // ép render trước animation
+  bigLock.classList.add("spin");
+  bigLock.offsetHeight;
+  bigLock.classList.remove("spin");
+
+  overlay.style.display = "none";
+});
