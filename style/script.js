@@ -241,7 +241,8 @@ function typewriterEffect(text, element) {
 
 let currentTopZ = 200;
 let typed = false;
-const flippingPages = new WeakSet();
+let isFlipping = false;
+let pendingFlip = false;
 
 pages.forEach((page) => {
   let startX = 0;
@@ -250,15 +251,14 @@ pages.forEach((page) => {
 
 const flipForward = () => {
 
-  if (flippingPages.has(page)) return;
+  if (isFlipping) {
+    pendingFlip = true;
+    return;
+  }
 
   if (!page.classList.contains('flipped')) {
 
-    flippingPages.add(page);
-
-    setTimeout(() => {
-      flippingPages.delete(page);
-    }, 1200);
+    isFlipping = true;
 
     if (page === pages[pages.length - 2] && !typed) {
       const endText = document.getElementById('ending-text');
@@ -286,26 +286,36 @@ const flipForward = () => {
 
     currentTopZ++;
     page.style.zIndex = currentTopZ;
+
+    setTimeout(() => {
+      isFlipping = false;
+
+      if (pendingFlip) {
+        pendingFlip = false;
+        flipForward();
+      }
+
+    }, 1200); // phải đúng bằng CSS animation
   }
 };
 
 const flipBackward = () => {
 
-  if (flippingPages.has(page)) return;
+  if (isFlipping) return;
 
   if (page.classList.contains('flipped')) {
 
-    flippingPages.add(page);
-
-    setTimeout(() => {
-      flippingPages.delete(page);
-    }, 500);
+    isFlipping = true;
 
     page.classList.add('fast');
     page.classList.remove('flipped');
 
     currentTopZ++;
     page.style.zIndex = currentTopZ;
+
+    setTimeout(() => {
+      isFlipping = false;
+    }, 500);
   }
 };
 
@@ -374,6 +384,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
