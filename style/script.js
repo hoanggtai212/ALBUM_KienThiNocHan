@@ -295,7 +295,7 @@ const flipForward = () => {
         flipForward();
       }
 
-    }, 1200); // phải đúng bằng CSS animation
+    }, 1000); // phải đúng bằng CSS animation
   }
 };
 
@@ -315,7 +315,7 @@ const flipBackward = () => {
 
     setTimeout(() => {
       isFlipping = false;
-    }, 500);
+    }, 1000);
   }
 };
 
@@ -384,6 +384,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
