@@ -14,63 +14,63 @@
 <div id="lock-screen-1">
   <div class="lock-wrapper">
     <h2>
-  NHẬP PASS ĐI NGƯỜI ĐẸP
-  <span class="hint">Gợi ý: Sinh nhựt cụa bé 🥰</span>
-  <span class="hint">(Ngày / Tháng / Năm)</span>
-</h2>
+      NHẬP PASS ĐI NGƯỜI ĐẸP
+      <span class="hint">Gợi ý: Sinh nhựt cụa bé 🥰</span>
+      <span class="hint">(Ngày / Tháng / Năm)</span>
+    </h2>
 
     <input type="text" id="password-input-1"
-           class="password-input"
-           placeholder="Enter password" readonly />
+      class="password-input"
+      placeholder="Enter password" readonly />
 
     <div class="keypad">
-      <button onclick="enterNumber(1)">1</button>
-      <button onclick="enterNumber(2)">2</button>
-      <button onclick="enterNumber(3)">3</button>
-      <button onclick="enterNumber(4)">4</button>
-      <button onclick="enterNumber(5)">5</button>
-      <button onclick="enterNumber(6)">6</button>
-      <button onclick="enterNumber(7)">7</button>
-      <button onclick="enterNumber(8)">8</button>
-      <button onclick="enterNumber(9)">9</button>
-      <button></button>
-      <button onclick="enterNumber(0)">0</button>
-      <button class="delete" onclick="deleteNumber()">X</button>
+      <button data-num="1">1</button>
+      <button data-num="2">2</button>
+      <button data-num="3">3</button>
+      <button data-num="4">4</button>
+      <button data-num="5">5</button>
+      <button data-num="6">6</button>
+      <button data-num="7">7</button>
+      <button data-num="8">8</button>
+      <button data-num="9">9</button>
+      <button disabled></button>
+      <button data-num="0">0</button>
+      <button class="delete">X</button>
     </div>
 
-    <button class="submit-btn" onclick="checkPass()">✔</button>
+    <button class="submit-btn">✔</button>
   </div>
 </div>
 
 <!-- 🔐 LOCK 2 -->
 <div id="lock-screen-2" style="display:none;">
   <div class="lock-wrapper">
-        <h2>
-  NHẬP PASS ĐI NGƯỜI ĐẸP
-  <span class="hint">Gợi ý: Sinh nhựt cụa anh 😎</span>
-  <span class="hint">(Ngày / Tháng / Năm)</span>
-</h2>
+    <h2>
+      NHẬP PASS ĐI NGƯỜI ĐẸP
+      <span class="hint">Gợi ý: Sinh nhựt cụa anh 😎</span>
+      <span class="hint">(Ngày / Tháng / Năm)</span>
+    </h2>
 
     <input type="text" id="password-input-2"
-           class="password-input"
-           placeholder="Enter password" readonly />
+      class="password-input"
+      placeholder="Enter password" readonly />
 
     <div class="keypad">
-      <button onclick="enterNumber(1)">1</button>
-      <button onclick="enterNumber(2)">2</button>
-      <button onclick="enterNumber(3)">3</button>
-      <button onclick="enterNumber(4)">4</button>
-      <button onclick="enterNumber(5)">5</button>
-      <button onclick="enterNumber(6)">6</button>
-      <button onclick="enterNumber(7)">7</button>
-      <button onclick="enterNumber(8)">8</button>
-      <button onclick="enterNumber(9)">9</button>
-      <button></button>
-      <button onclick="enterNumber(0)">0</button>
-      <button class="delete" onclick="deleteNumber()">X</button>
+      <button data-num="1">1</button>
+      <button data-num="2">2</button>
+      <button data-num="3">3</button>
+      <button data-num="4">4</button>
+      <button data-num="5">5</button>
+      <button data-num="6">6</button>
+      <button data-num="7">7</button>
+      <button data-num="8">8</button>
+      <button data-num="9">9</button>
+      <button disabled></button>
+      <button data-num="0">0</button>
+      <button class="delete">X</button>
     </div>
 
-    <button class="submit-btn" onclick="checkPass()">✔</button>
+    <button class="submit-btn">✔</button>
   </div>
 </div>
 
@@ -78,31 +78,31 @@
 <div id="lock-screen-3" style="display:none;">
   <div class="lock-wrapper">
     <h2>
-  NHẬP PASS ĐI NGƯỜI ĐẸP
-  <span class="hint">Gợi ý: First day 2 ta quen nhau 🙄</span>
-  <span class="hint">(Ngày / Tháng / Năm)</span>
-</h2>
+      NHẬP PASS ĐI NGƯỜI ĐẸP
+      <span class="hint">Gợi ý: First day 2 ta quen nhau 🙄 </span>
+      <span class="hint">(Ngày / Tháng / Năm)</span>
+    </h2>
 
     <input type="text" id="password-input-3"
-           class="password-input"
-           placeholder="Enter password" readonly />
+      class="password-input"
+      placeholder="Enter password" readonly />
 
     <div class="keypad">
-      <button onclick="enterNumber(1)">1</button>
-      <button onclick="enterNumber(2)">2</button>
-      <button onclick="enterNumber(3)">3</button>
-      <button onclick="enterNumber(4)">4</button>
-      <button onclick="enterNumber(5)">5</button>
-      <button onclick="enterNumber(6)">6</button>
-      <button onclick="enterNumber(7)">7</button>
-      <button onclick="enterNumber(8)">8</button>
-      <button onclick="enterNumber(9)">9</button>
-      <button></button>
-      <button onclick="enterNumber(0)">0</button>
-      <button class="delete" onclick="deleteNumber()">X</button>
+      <button data-num="1">1</button>
+      <button data-num="2">2</button>
+      <button data-num="3">3</button>
+      <button data-num="4">4</button>
+      <button data-num="5">5</button>
+      <button data-num="6">6</button>
+      <button data-num="7">7</button>
+      <button data-num="8">8</button>
+      <button data-num="9">9</button>
+      <button disabled></button>
+      <button data-num="0">0</button>
+      <button class="delete">X</button>
     </div>
 
-    <button class="submit-btn" onclick="checkPass()">✔</button>
+    <button class="submit-btn">✔</button>
   </div>
 </div>
   
@@ -126,22 +126,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
