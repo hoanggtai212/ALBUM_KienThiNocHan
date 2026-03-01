@@ -242,7 +242,10 @@ function typewriterEffect(text, element) {
 let currentTopZ = 200;
 let typed = false;
 let isFlipping = false;
-let pendingFlip = false;
+let isSpamming = false;
+let spamTimeout = null;
+const SPAM_GAP = 200; // 200ms không click nữa thì coi như ngừng spam
+
 
 pages.forEach((page) => {
   let startX = 0;
@@ -251,10 +254,7 @@ pages.forEach((page) => {
 
 const flipForward = () => {
 
-  if (isFlipping) {
-    pendingFlip = true;
-    return;
-  }
+  if (isFlipping) return;
 
   if (!page.classList.contains('flipped')) {
 
@@ -288,14 +288,18 @@ const flipForward = () => {
     page.style.zIndex = currentTopZ;
 
     setTimeout(() => {
+
       isFlipping = false;
 
-      if (pendingFlip) {
-        pendingFlip = false;
+      // 🔥 KHÔNG queue
+      // 🔥 KHÔNG pending
+      // Chỉ kiểm tra còn spam hay không
+
+      if (isSpamming) {
         flipForward();
       }
 
-    }, 1000); // phải đúng bằng CSS animation
+    }, 1000);
   }
 };
 
@@ -319,7 +323,18 @@ const flipBackward = () => {
   }
 };
 
-  front.addEventListener('click', flipForward);
+  front.addEventListener('click', () => {
+
+  isSpamming = true;
+
+  clearTimeout(spamTimeout);
+  spamTimeout = setTimeout(() => {
+    isSpamming = false;
+  }, SPAM_GAP);
+
+  flipForward();
+});
+  
   back.addEventListener('click', flipBackward);
 
 
@@ -384,6 +399,7 @@ document.querySelectorAll('.submit-btn').forEach(btn => {
     checkPass();
   });
 });
+
 
 
 
